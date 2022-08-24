@@ -1,8 +1,13 @@
 <script>
-	import Library from "./library/library.svelte"
+import Detail from "./detail/detail.svelte"
+import Library from "./library/library.svelte"
+
+let page = 'library'
+let pageArgs = {}
 
   function handleBookSelect(event) {
-    console.log("clicked", event.detail.id);
+    page = 'detail'
+    pageArgs = event.detail
   }
 </script>
 
@@ -65,5 +70,9 @@ textarea {
 </style>
 
 <main>
+  {#if page === 'detail'}
+  <Detail {...pageArgs} />
+  {:else}
 	<Library on:book-select={handleBookSelect} />
+  {/if}
 </main>
