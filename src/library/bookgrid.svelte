@@ -2,6 +2,7 @@
     import BookCover from '../common/bookcover.svelte';
     import Heart from './heart.svelte';
     export let books = [];
+    export let onBookSelect;
 </script>
 
 <style>
@@ -24,12 +25,12 @@
     bottom: calc(-1 * var(--spacingSmall));
     right: calc(-1 * var(--spacingSmall));
   }
-
 </style>
+
 <ul>
 {#each books as book }
     <li>
-        <BookCover {book} />
+        <BookCover {book} onClick={onBookSelect} />
         {#if book.favorite}
         <div class="heart">
             <Heart />

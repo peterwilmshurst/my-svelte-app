@@ -1,5 +1,9 @@
 <script>
 	import Library from "./library/library.svelte"
+
+  function handleBookSelect(id) {
+    console.log("clicked", id);
+  }
 </script>
 
 <style>
@@ -61,5 +65,5 @@ textarea {
 </style>
 
 <main>
-	<Library />
+	<Library onBookSelect={handleBookSelect} />
 </main>

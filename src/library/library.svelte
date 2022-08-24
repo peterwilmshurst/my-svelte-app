@@ -2,8 +2,10 @@
     import { onMount } from "svelte"
 
         import BookGrid from "./bookgrid.svelte";
-    	import Button from "../common/button.svelte";
+    	  import Button from "../common/button.svelte";
         import { httpGet } from "../common/api.js"
+
+        export let onBookSelect;
 
         let books = []
         onMount( async function () {
@@ -42,4 +44,4 @@ books = data
     </p>
 
     <Button>Add Book</Button>
-    <BookGrid books={books} />
+    <BookGrid {books} {onBookSelect} />
