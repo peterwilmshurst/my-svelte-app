@@ -1,11 +1,24 @@
 <script>
-    import BookCover from '../common/bookcover.svelte';
-    import Heart from './heart.svelte';
-    export let books = [];
+  import BookCover from "../common/bookcover.svelte";
+  import Heart from "./heart.svelte";
+  export let books = [];
 </script>
 
+<ul>
+  {#each books as book}
+    <li>
+      <BookCover interactive {book} />
+      {#if book.favorite}
+        <div class="heart">
+          <Heart />
+        </div>
+      {/if}
+    </li>
+  {/each}
+</ul>
+
 <style>
-      ul {
+  ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
     grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
@@ -25,16 +38,3 @@
     right: calc(-1 * var(--spacingSmall));
   }
 </style>
-
-<ul>
-{#each books as book }
-    <li>
-        <BookCover {book} on:book-select />
-        {#if book.favorite}
-        <div class="heart">
-            <Heart />
-        </div>
-        {/if}
-    </li>
-{/each}
-</ul>

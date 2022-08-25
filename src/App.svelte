@@ -1,14 +1,11 @@
 <script>
+import { Route, Router } from "svelte-routing"
 import Detail from "./detail/detail.svelte"
 import Library from "./library/library.svelte"
+export let url = ""
 
-let page = 'library'
-let pageArgs = {}
 
-  function handleBookSelect(event) {
-    page = 'detail'
-    pageArgs = event.detail
-  }
+
 </script>
 
 <style>
@@ -69,10 +66,13 @@ textarea {
 
 </style>
 
+<Router {url}>
 <main>
-  {#if page === 'detail'}
-  <Detail {...pageArgs} />
-  {:else}
-	<Library on:book-select={handleBookSelect} />
-  {/if}
+  <Route path="/books/:id" let:params>
+  <Detail id={params.id} />
+  </Route>
+  <Route path="/">
+	<Library />
+</Route>
 </main>
+</Router>
