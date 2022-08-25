@@ -1,11 +1,9 @@
 <script>
 import { Route, Router } from "svelte-routing"
+import Create from "./create/create.svelte"
 import Detail from "./detail/detail.svelte"
 import Library from "./library/library.svelte"
 export let url = ""
-
-
-
 </script>
 
 <style>
@@ -63,11 +61,13 @@ textarea {
     --typeSizeDefault: 24px;
   }
 }
-
 </style>
 
 <Router {url}>
 <main>
+  <Route path="/create">
+    <Create />
+  </Route>
   <Route path="/books/:id" let:params>
   <Detail id={params.id} />
   </Route>

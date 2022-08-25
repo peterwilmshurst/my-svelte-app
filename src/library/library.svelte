@@ -22,7 +22,7 @@
   blanditiis aliquam magni fugit! Porro totam incidunt obcaecati quis fugiat!
 </p>
 
-<Button>Add Book</Button>
+<Button to="/create">+ Add Book</Button>
 <BookGrid {books} />
 
 <style>
